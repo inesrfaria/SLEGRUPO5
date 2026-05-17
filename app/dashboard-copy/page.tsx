@@ -251,7 +251,7 @@ export default function DashboardCopy() {
             <span className="w-2 h-8 bg-indigo-600 rounded-full"></span>
             Taxas de Pobreza (2023)
           </h3>
-          <div className="h-[350px] w-full">
+          <div className="h-[280px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={compareData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -282,7 +282,7 @@ export default function DashboardCopy() {
             </ResponsiveContainer>
           </div>
           <p className="mt-4 text-[10px] text-slate-400 font-bold uppercase tracking-wide italic">
-            * REPRESENTANTE: PAÍSES COM MAIOR TAXA DE POBREZA POR REGIME SELECIONADO.
+            * REPRESENTANTE: PAÍSES COM MAIOR TAXA DE POBREZA RELATIVA POR REGIME SELECIONADO.
           </p>
         </motion.div>
 
@@ -290,40 +290,35 @@ export default function DashboardCopy() {
           initial={{ opacity: 0, y: 20 }} 
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-slate-900 text-white p-8 rounded-3xl shadow-xl space-y-6 relative overflow-hidden"
+          className="bg-slate-900 text-white p-8 rounded-3xl shadow-xl flex flex-col justify-center relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
-          <div className="flex justify-between items-start">
+          <div className="flex justify-between items-start mb-4">
             <h3 className="text-sm font-black uppercase tracking-[0.2em] text-slate-400">Indicadores do Cluster</h3>
             <div className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${regimeColors[selectedRegime]}`}>
               {selectedRegime}
             </div>
           </div>
           
-          <div className="grid grid-cols-2 gap-4 relative z-10">
-            <div className="bg-white/5 p-5 rounded-2xl border border-white/5 backdrop-blur-sm">
-              <p className="text-slate-500 text-[10px] font-black uppercase tracking-tight mb-1">Pobreza Relativa</p>
-              <p className="text-4xl font-bold">{activeData.povertyRate2023}%</p>
-              <div className="w-full h-1.5 bg-white/10 rounded-full mt-3 overflow-hidden">
+          <div className="flex flex-col gap-4 relative z-10 flex-1 justify-center">
+            <div className="bg-white/5 p-6 rounded-2xl border border-white/5 backdrop-blur-sm">
+              <p className="text-slate-500 text-[10px] font-black uppercase tracking-tight mb-2">Pobreza Relativa</p>
+              <div className="flex items-end gap-3">
+                <p className="text-5xl font-bold leading-none">{activeData.povertyRate2023}%</p>
+              </div>
+              <div className="w-full h-2 bg-white/10 rounded-full mt-4 overflow-hidden">
                 <div className="h-full bg-indigo-400" style={{ width: `${activeData.povertyRate2023 * 2}%` }}></div>
               </div>
             </div>
-            <div className="bg-white/5 p-5 rounded-2xl border border-white/5 backdrop-blur-sm">
-              <p className="text-slate-500 text-[10px] font-black uppercase tracking-tight mb-1">Trabalhadores Pobres</p>
-              <p className="text-4xl font-bold text-fuchsia-400">{activeData.workingPoorRate2023}%</p>
-              <div className="w-full h-1.5 bg-white/10 rounded-full mt-3 overflow-hidden">
+            <div className="bg-white/5 p-6 rounded-2xl border border-white/5 backdrop-blur-sm">
+              <p className="text-slate-500 text-[10px] font-black uppercase tracking-tight mb-2">Trabalhadores Pobres</p>
+              <div className="flex items-end gap-3">
+                <p className="text-5xl font-bold text-fuchsia-400 leading-none">{activeData.workingPoorRate2023}%</p>
+              </div>
+              <div className="w-full h-2 bg-white/10 rounded-full mt-4 overflow-hidden">
                 <div className="h-full bg-fuchsia-400" style={{ width: `${activeData.workingPoorRate2023 * 2}%` }}></div>
               </div>
             </div>
-          </div>
-
-          <div className="bg-indigo-500/10 p-6 rounded-2xl border border-indigo-500/20">
-            <h4 className="text-xs font-black uppercase tracking-widest flex items-center gap-2 mb-3 text-indigo-400">
-              Observação Comparativa
-            </h4>
-            <p className="text-sm text-slate-300 leading-relaxed font-medium">
-              {activeData.observation}
-            </p>
           </div>
         </motion.div>
       </div>
@@ -344,28 +339,27 @@ export default function DashboardCopy() {
     ];
 
     return (
-      <div className="space-y-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="flex flex-col gap-6 pb-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }} 
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200"
+            className="bg-white p-6 rounded-3xl shadow-sm border border-slate-200"
           >
-            <h3 className="text-xl font-bold mb-8 flex justify-between items-center text-slate-800">
+            <h3 className="text-lg font-bold mb-6 flex justify-between items-center text-slate-800">
               <span className="flex items-center gap-3">
-                <span className="w-2 h-8 bg-fuchsia-600 rounded-full"></span>
+                <span className="w-2 h-6 bg-fuchsia-600 rounded-full"></span>
                 Privação por Género
               </span>
-              <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Evolução 2023-2025</span>
             </h3>
-            <div className="h-[300px]">
+            <div className="h-[280px]">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                <BarChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 11, fontWeight: 600 }} />
-                  <YAxis axisLine={false} tickLine={false} unit="%" tick={{ fill: '#64748b', fontSize: 11 }} />
+                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 10, fontWeight: 600 }} />
+                  <YAxis axisLine={false} tickLine={false} unit="%" tick={{ fill: '#64748b', fontSize: 10 }} />
                   <Tooltip cursor={{ fill: "#f8fafc" }} />
-                  <Legend iconType="circle" />
+                  <Legend iconType="circle" wrapperStyle={{ fontSize: '10px' }} />
                   <Bar dataKey="2023" fill="#f5d0fe" radius={[4, 4, 0, 0]} />
                   <Bar dataKey="2024" fill="#d946ef" radius={[4, 4, 0, 0]} />
                   <Bar dataKey="2025" fill="#a21caf" radius={[4, 4, 0, 0]} />
@@ -378,23 +372,22 @@ export default function DashboardCopy() {
             initial={{ opacity: 0, scale: 0.95 }} 
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
-            className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200"
+            className="bg-white p-6 rounded-3xl shadow-sm border border-slate-200"
           >
-            <h3 className="text-xl font-bold mb-8 flex justify-between items-center text-slate-800">
+            <h3 className="text-lg font-bold mb-6 flex justify-between items-center text-slate-800">
               <span className="flex items-center gap-3">
-                <span className="w-2 h-8 bg-amber-600 rounded-full"></span>
+                <span className="w-2 h-6 bg-amber-600 rounded-full"></span>
                 Privação por Idade
               </span>
-              <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Grupos Etários</span>
             </h3>
-            <div className="h-[300px]">
+            <div className="h-[280px]">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={ageData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                <BarChart data={ageData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 11, fontWeight: 600 }} />
-                  <YAxis axisLine={false} tickLine={false} unit="%" tick={{ fill: '#64748b', fontSize: 11 }} />
+                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 10, fontWeight: 600 }} />
+                  <YAxis axisLine={false} tickLine={false} unit="%" tick={{ fill: '#64748b', fontSize: 10 }} />
                   <Tooltip cursor={{ fill: "#f8fafc" }} />
-                  <Legend iconType="circle" />
+                  <Legend iconType="circle" wrapperStyle={{ fontSize: '10px' }} />
                   <Bar dataKey="2023" fill="#fef3c7" radius={[4, 4, 0, 0]} />
                   <Bar dataKey="2024" fill="#f59e0b" radius={[4, 4, 0, 0]} />
                   <Bar dataKey="2025" fill="#b45309" radius={[4, 4, 0, 0]} />
@@ -404,19 +397,31 @@ export default function DashboardCopy() {
           </motion.div>
         </div>
 
-        <div className="bg-slate-900 p-8 rounded-[2rem] border border-slate-800 flex items-center gap-8 shadow-2xl">
-          <div className="w-20 h-20 bg-emerald-500/20 rounded-2xl flex items-center justify-center text-emerald-500 shrink-0">
-            <Activity className="w-10 h-10" />
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-slate-900 px-6 py-4 rounded-2xl border border-slate-800 flex items-center gap-6 shadow-xl"
+        >
+          <div className="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-500 shrink-0">
+            <Activity className="w-6 h-6" />
           </div>
           <div>
-            <h4 className="text-xs font-black uppercase tracking-widest text-slate-500 mb-2">Conclusão Analítica</h4>
-            <p className="text-slate-300 leading-relaxed font-medium">
+            <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-1">Conclusão Analítica</h4>
+            <p className="text-xs text-slate-300 leading-relaxed font-medium">
               {activeData.country === "Espanha" ? "Em" : "Na"} {activeData.country}, a privação material e social tende a ser mais acentuada nos 
-              {activeData.deprivation.age16_24[2]?.value > activeData.deprivation.age25_54[2]?.value ? " escalões mais jovens (16-24 anos)" : " escalões de idade ativa"}, 
+              {(() => {
+                const v1 = activeData.deprivation.age16_24[2]?.value || 0;
+                const v2 = activeData.deprivation.age25_54[2]?.value || 0;
+                const v3 = activeData.deprivation.age55Plus[2]?.value || 0;
+                const max = Math.max(v1, v2, v3);
+                if (max === v1) return " escalões mais jovens (16-24 anos)";
+                if (max === v2) return " escalões de idade ativa (25-54 ano)";
+                return " escalões seniores (55+ anos)";
+              })()}, 
               refletindo a vulnerabilidade de certos grupos no mercado de trabalho deste regime.
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     );
   };
@@ -429,47 +434,68 @@ export default function DashboardCopy() {
     ];
 
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 lg:col-span-2">
-          <h3 className="text-xl font-bold mb-8 flex items-center gap-3 text-slate-800">
-            <span className="w-2 h-8 bg-amber-600 rounded-full"></span>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 lg:col-span-2">
+          <h3 className="text-lg font-bold mb-6 flex items-center gap-3 text-slate-800">
+            <span className="w-2 h-6 bg-amber-600 rounded-full"></span>
             Taxas por Nível de Escolaridade
           </h3>
-          <div className="h-[400px]">
+          <div className="h-[320px]">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={data}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 11, fontWeight: 600 }} />
-                <YAxis axisLine={false} tickLine={false} unit="%" tick={{ fill: '#64748b', fontSize: 11 }} />
+                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 10, fontWeight: 600 }} />
+                <YAxis axisLine={false} tickLine={false} unit="%" tick={{ fill: '#64748b', fontSize: 10 }} />
                 <Tooltip contentStyle={{ borderRadius: "16px", border: '1px solid #e2e8f0' }} cursor={{ stroke: '#e2e8f0', strokeWidth: 2 }} />
-                <Legend />
-                <Line type="monotone" dataKey="2023" stroke="#f59e0b" strokeWidth={4} dot={{ r: 6, fill: '#f59e0b', strokeWidth: 2, stroke: '#fff' }} activeDot={{ r: 8 }} />
-                <Line type="monotone" dataKey="2024" stroke="#d97706" strokeWidth={4} dot={{ r: 6, fill: '#d97706', strokeWidth: 2, stroke: '#fff' }} activeDot={{ r: 8 }} />
-                <Line type="monotone" dataKey="2025" stroke="#92400e" strokeWidth={4} dot={{ r: 6, fill: '#92400e', strokeWidth: 2, stroke: '#fff' }} activeDot={{ r: 8 }} />
+                <Legend iconType="circle" wrapperStyle={{ fontSize: '10px' }} />
+                <Line type="monotone" dataKey="2023" stroke="#f59e0b" strokeWidth={3} dot={{ r: 4, fill: '#f59e0b', strokeWidth: 1.5, stroke: '#fff' }} activeDot={{ r: 6 }} />
+                <Line type="monotone" dataKey="2024" stroke="#d97706" strokeWidth={3} dot={{ r: 4, fill: '#d97706', strokeWidth: 1.5, stroke: '#fff' }} activeDot={{ r: 6 }} />
+                <Line type="monotone" dataKey="2025" stroke="#92400e" strokeWidth={3} dot={{ r: 4, fill: '#92400e', strokeWidth: 1.5, stroke: '#fff' }} activeDot={{ r: 6 }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </div>
         
-        <div className="space-y-6">
-          <div className="bg-slate-900 border border-slate-800 text-white p-8 rounded-[2rem] shadow-xl relative overflow-hidden">
+        <div className="space-y-4">
+          <div className="bg-slate-900 border border-slate-800 text-white p-6 rounded-[1.5rem] shadow-xl relative overflow-hidden flex-1">
             <div className="absolute top-0 right-0 w-24 h-24 bg-amber-500/10 rounded-full translate-x-1/3 -translate-y-1/3 blur-xl"></div>
-            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] mb-4 text-slate-500">Relatório de Impacto</h4>
-            <div className="space-y-4 relative z-10">
-              <div className="pb-4 border-b border-white/5">
-                <p className="text-slate-400 text-[10px] uppercase font-black tracking-tight mb-1">Gap Educacional (2025)</p>
-                <p className="text-4xl font-bold text-amber-500">
-                  {Math.round(activeData.education.low[2].value - activeData.education.high[2].value)}% <span className="text-sm font-normal text-slate-500">Diferença</span>
+            <h4 className="text-[9px] font-black uppercase tracking-[0.2em] mb-3 text-slate-500">Relatório de Impacto</h4>
+            <div className="space-y-3 relative z-10">
+              <div className="pb-3 border-b border-white/5">
+                <p className="text-slate-400 text-[9px] uppercase font-black tracking-tight mb-1">Gap Educacional (2025)</p>
+                <p className="text-3xl font-bold text-amber-500">
+                  {Math.round(activeData.education.low[2].value - activeData.education.high[2].value)}% <span className="text-[10px] font-normal text-slate-500 capitalize">Diferença</span>
                 </p>
               </div>
-              <p className="text-sm text-slate-300 leading-relaxed font-medium">
+              <p className="text-xs text-slate-300 leading-relaxed font-medium">
                 A escolaridade continua a ser o principal fator de proteção contra a pobreza laboral no regime {selectedRegime}.
               </p>
             </div>
           </div>
-          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm italic text-slate-500 text-xs font-bold leading-relaxed">
-            &quot;A educação de nível 5-8 (Superior) apresenta as taxas mais baixas de risco de pobreza em todos os regimes estudados.&quot;
-          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4"
+          >
+            <div className="w-10 h-10 bg-amber-500/10 rounded-xl flex items-center justify-center text-amber-600 shrink-0">
+               <BookOpen className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">Conclusão por País</p>
+              <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+                {(() => {
+                  const low = activeData.education.low[2].value;
+                  const high = activeData.education.high[2].value;
+                  if (activeData.country === "Suécia") return `Na Suécia, a educação superior (ISCED 5-8) mantém o risco de pobreza laboral em patamares baixos (${high}%), confirmando a valorização do capital humano.`;
+                  if (activeData.country === "Irlanda") return `Na Irlanda, verifica-se uma das menores taxas de pobreza do cluster para graduados do ensino superior (${high}%).`;
+                  if (activeData.country === "Áustria") return `Na Áustria, as baixas qualificações (ISCED 0-2) apresentam um risco de ${low}%, sublinhando a necessidade de políticas de requalificação profissional.`;
+                  if (activeData.country === "Espanha") return `Em Espanha, a disparidade entre o nível básico e o superior é de ${Math.round(low - high)}%, sublinhando o fosso educativo neste regime.`;
+                  return `Na Roménia, regista-se o maior fosso educacional do cluster, com uma taxa de ${low}% para baixas qualificações frente a ${high}% no ensino superior.`;
+                })()}
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
     );
@@ -482,24 +508,24 @@ export default function DashboardCopy() {
     ];
 
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-4">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200"
+          className="bg-white p-6 rounded-3xl shadow-sm border border-slate-200"
         >
-          <h3 className="text-xl font-bold mb-8 flex items-center gap-3 text-slate-800">
-            <span className="w-2 h-8 bg-cyan-600 rounded-full"></span>
+          <h3 className="text-lg font-bold mb-6 flex items-center gap-3 text-slate-800">
+            <span className="w-2 h-6 bg-cyan-600 rounded-full"></span>
             Pobreza vs Intensidade
           </h3>
-          <div className="h-[350px]">
+          <div className="h-[280px]">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data} layout="vertical">
+              <BarChart data={data} layout="vertical" margin={{ left: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#f1f5f9" />
-                <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 11 }} />
-                <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} width={150} tick={{ fill: '#64748b', fontSize: 11, fontWeight: 700 }} />
+                <XAxis type="number" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontSize: 10 }} />
+                <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} width={100} tick={{ fill: '#64748b', fontSize: 9, fontWeight: 700 }} />
                 <Tooltip cursor={{ fill: '#f8fafc' }} contentStyle={{ borderRadius: '16px' }} />
-                <Legend iconType="circle" />
+                <Legend iconType="circle" wrapperStyle={{ fontSize: '10px' }} />
                 <Bar dataKey="2023" fill="#a5f3fc" radius={[0, 4, 4, 0]} />
                 <Bar dataKey="2024" fill="#22d3ee" radius={[0, 4, 4, 0]} />
                 <Bar dataKey="2025" fill="#0891b2" radius={[0, 4, 4, 0]} />
@@ -508,20 +534,46 @@ export default function DashboardCopy() {
           </div>
         </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="bg-slate-900 border border-slate-800 text-white p-8 rounded-[2rem] shadow-xl flex flex-col justify-center relative overflow-hidden group"
-        >
-          <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full translate-x-1/4 -translate-y-1/4 blur-3xl group-hover:bg-cyan-500/20 transition-colors"></div>
-          <h3 className="text-3xl font-bold mb-6 italic tracking-tight relative z-10 text-slate-100">O Efeito do Desdobramento</h3>
-          <p className="text-lg text-slate-300 leading-relaxed mb-6 relative z-10 font-medium">
-            Uma intensidade laboral <span className="font-black text-cyan-400">Muito Alta</span> reduz drasticamente o risco de pobreza comparado com a intensidade <span className="font-black text-cyan-400 uppercase">Média</span>.
-          </p>
-          <div className="p-5 bg-white/5 rounded-2xl border border-white/5 text-sm font-bold text-slate-400 relative z-10">
-            No regime {selectedRegime}, trabalhar a tempo inteiro é necessário mas nem sempre suficiente para sair da zona de risco.
-          </div>
-        </motion.div>
+        <div className="flex flex-col gap-4">
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="bg-slate-900 border border-slate-800 text-white p-8 rounded-[2rem] shadow-xl flex flex-col justify-center relative overflow-hidden group flex-1"
+          >
+            <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full translate-x-1/4 -translate-y-1/4 blur-3xl group-hover:bg-cyan-500/20 transition-colors"></div>
+            <h3 className="text-2xl font-bold mb-4 tracking-tight relative z-10 text-slate-100">Intensidade Laboral</h3>
+            <p className="text-base text-slate-300 leading-relaxed mb-4 relative z-10 font-medium">
+              Uma intensidade <span className="font-black text-cyan-400">Muito Alta</span> reduz drasticamente o risco de pobreza.
+            </p>
+            <div className="p-4 bg-white/5 rounded-2xl border border-white/5 text-[10px] font-bold text-slate-400 relative z-10">
+              No regime {selectedRegime}, trabalhar a tempo inteiro é crucial para reduzir a zona de risco.
+            </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4"
+          >
+            <div className="w-10 h-10 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-600 shrink-0">
+              <Activity className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest mb-1">Conclusão Analítica</p>
+              <p className="text-[11px] text-slate-600 font-bold leading-relaxed">
+                {(() => {
+                  const high = activeData.intensity.high[2].value;
+                  const medium = activeData.intensity.medium[2].value;
+                  if (activeData.country === "Suécia") return `Na Suécia, a Intensidade muito alta (IMA) garante um dos menores riscos de pobreza do cluster (${high}% em 2025).`;
+                  if (activeData.country === "Irlanda") return `A Irlanda mostra que a plena ocupação laboral reduz o risco de pobreza para níveis residuais (${high}% em 2025).`;
+                  if (activeData.country === "Áustria") return `Na Áustria, apesar da estabilidade, a intensidade média ainda expõe os agregados a um risco de ${medium}%.`;
+                  if (activeData.country === "Espanha") return `Em Espanha, a intensidade média acarreta um risco elevado (${medium}% em 2025), refletindo a precariedade do emprego parcial.`;
+                  return `Na Roménia, o fosso entre intensidade média (${medium}%) e muito alta (${high}%) é o mais acentuado, sublinhando a dependência do trabalho full-time.`;
+                })()}
+              </p>
+            </div>
+          </motion.div>
+        </div>
       </div>
     );
   };
@@ -541,7 +593,7 @@ export default function DashboardCopy() {
             <span className="w-2 h-8 bg-orange-500 rounded-full"></span>
             Tipologia de Agregado Familiar
           </h3>
-          <div className="h-[400px]">
+          <div className="h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={data}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
@@ -637,7 +689,7 @@ export default function DashboardCopy() {
             <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-indigo-600/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
             <p className="text-[10px] text-slate-500 font-black uppercase tracking-[0.2em] mb-3">Status Global</p>
             <p className="text-[11px] leading-relaxed font-bold text-slate-300 relative z-10">
-              Sincronizado com base de dados Eurostat 2024-2025.
+              Sincronizado com base de dados Eurostat 2023-2025.
             </p>
             <div className="w-full h-1.5 bg-slate-800 rounded-full mt-4 overflow-hidden relative z-10">
               <motion.div 
@@ -653,12 +705,12 @@ export default function DashboardCopy() {
         <div className="flex-1 p-8 min-w-0 bg-slate-50/50">
           
           {/* Cluster Status Bar */}
-          <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 mb-4">
             {DATA.map((d) => (
               <button
                 key={d.regime}
                 onClick={() => setSelectedRegime(d.regime)}
-                className={`group flex flex-col justify-between p-5 rounded-2xl transition-all duration-300 text-left border relative overflow-hidden h-32 ${
+                className={`group flex flex-col justify-between p-4 rounded-2xl transition-all duration-300 text-left border relative overflow-hidden h-24 ${
                   selectedRegime === d.regime 
                     ? `${regimeColors[d.regime]} text-white border-transparent shadow-lg scale-[1.02] z-10` 
                     : "bg-white text-slate-800 border-slate-200 hover:border-slate-300 shadow-sm"
