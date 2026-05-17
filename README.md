@@ -1,20 +1,53 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# UE Trabalhadores Pobres e Estados de Bem-Estar Social
 
-# Run and deploy your AI Studio app
+Este é um dashboard interativo desenvolvido para analisar e visualizar a situação dos trabalhadores pobres e a privação social em diferentes regimes de bem-estar da União Europeia.
 
-This contains everything you need to run your app locally.
+## 📊 Sobre o Projeto
 
-View your app in AI Studio: https://ai.studio/apps/983b8070-1b05-4934-a53e-82f8b12f4be9
+A aplicação oferece uma análise comparativa baseada em dados (estilo Eurostat) para cinco regimes principais:
+- **Social-Democrata** (ex: Suécia)
+- **Liberal** (ex: Irlanda)
+- **Conservador** (ex: Áustria)
+- **Familialista** (ex: Espanha)
+- **Pós-Socialista** (ex: Roménia)
 
-## Run Locally
+### FuncionalidadesPrincipais:
+- **Visualização de Taxas de Pobreza**: Comparação entre pobreza relativa e trabalhadores pobres.
+- **Análise de Privação Social**: Dados segmentados por género e grupos etários.
+- **Impacto da Escolaridade**: Visualização de como o nível de instrução (ISCED) influencia o risco de pobreza.
+- **Intensidade de Trabalho**: Relação entre o volume de trabalho e a vulnerabilidade económica.
+- **Tipologia Familiar**: Impacto da estrutura do agregado familiar (ex: famílias monoparentais).
 
-**Prerequisites:**  Node.js
+## 🚀 Tecnologias Utilizadas
 
+- **React / Next.js 15+**
+- **Tailwind CSS** para design moderno e responsivo.
+- **Framer Motion** para animações fluidas.
+- **Recharts** para visualização de dados dinâmica.
+- **Lucide React** para iconografia técnica.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🛠️ Instalação e Configuração
+
+1. **Clonar o repositório:**
+   ```bash
+   git clone https://github.com/[seu-utilizador]/[nome-do-repo].git
+   cd [nome-do-repo]
+   ```
+
+2. **Instalar dependências:**
+   ```bash
+   npm install
+   ```
+
+3. **Executar em modo de desenvolvimento:**
+   ```bash
+   npm run dev
+   ```
+
+## 📈 Dados
+
+Os dados apresentados são exemplificativos da estrutura de análise para 2023-2025, focando-se na realidade dos "Working Poor" no contexto europeu.
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
