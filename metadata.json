@@ -1,0 +1,8 @@
+{
+  "name": "UE Trabalhadores Pobres e Estados de Bem-Estar Social",
+  "description": "Um estudo interativo sobre trabalhadores pobres e privação social em diferentes regimes de bem-estar da UE (Social-Democrata, Liberal, Conservador, Familialista e Pós-Socialista).",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
