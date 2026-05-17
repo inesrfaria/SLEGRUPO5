@@ -26,7 +26,16 @@ A aplicação oferece uma análise comparativa baseada em dados (estilo Eurostat
 - **Recharts** para visualização de dados dinâmica.
 - **Lucide React** para iconografia técnica.
 
-## 🛠️ Instalação e Configuração
+## 🚀 Publicação (GitHub Pages)
+
+Esta aplicação está configurada para ser publicada automaticamente no **GitHub Pages** através de GitHub Actions.
+
+### Como ativar:
+1. No seu repositório no GitHub, vá a **Settings** > **Pages**.
+2. Em **Build and deployment** > **Source**, selecione **GitHub Actions**.
+3. O fluxo de trabalho (workflow) irá detetar automaticamente cada *push* para o ramo `main` e implementar a aplicação de forma gratuita e sem necessidade de chaves API.
+
+## 🛠️ Instalação Local
 
 1. **Clonar o repositório:**
    ```bash
